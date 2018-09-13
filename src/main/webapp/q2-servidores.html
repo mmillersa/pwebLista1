@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Servidores</title>
+<body> 
+<h2>Servidor web </h2> é um software responsável por aceitar pedidos em HTTP de clientes, 
+geralmente os navegadores, e servi-los com respostas em HTTP, incluindo opcionalmente dados,
+que geralmente são páginas web, tais como documentos em HTML com objetos embutidos (imagens, etc.) 
+ou um computador que executa um programa que provê a funcionalidade descrita anteriormente.
+O mais popular, e mais utilizado no mundo, é o servidor Apache (software livre). 
+A Microsoft possui a sua própria solução denominada IIS (Internet Information Services).</h2><br />
+
+
+
+<h1>Índice</h1><br />
+1	Características<br />
+2	Exemplo do fluxo pedido/resposta gerado quando se acessa uma página estática<br />
+3	Páginas dinâmicas e páginas estáticas<br />
+4	Exemplo do fluxo pedido/resposta gerado quando se acede a uma página dinâmica<br />
+5	Lista<br />
+6	Referências<br /> 
+
+<h1>Características</h1><br />
+Os pedidos http que se referem habitualmente a páginas em HTML são normalmente feitos através de navegadores.<br />
+
+O processo se inicia com a conexão entre o computador onde está instalado o servidor web e o computador do cliente; como na web não é possível prever a que hora se dará essa conexão, os servidores web precisam estar disponíveis dia e noite.<br />
+
+A partir daí é processado o pedido do cliente, e conforme as restrições de segurança e a existência da informação solicitada, o servidor devolve os dados.<br />
+
+Genericamente tudo o que se enquadre no conceito de ficheiro pode ser enviado como resultado de um pedido em HTTP.<br />
+
+Finalmente, os servidores web também podem executar programas e scripts, interagindo mais com o usuário.<br />
+
+<h1>Exemplo do fluxo pedido/resposta gerado quando se acessa uma página estática</h1><br />
+Supondo que num servidor web existe um ficheiro chamado introWebServer.html com o seguinte conteúdo:<br />
+
+< html><br />
+ < body><br />
+  < p>olá mundo< /p><br />
+ < /body><br />
+< /html><br />
+Se no navegador tentar aceder a este ficheiro a sequência "pedido / resposta" iria produzir os seguintes comandos:<br />
+
+Pedido<br />
+
+GET /introWebServer.html HTTP/1.1<br />
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/x-shockwave-flash, application/vnd.ms-excel,<br />
+application/vnd.ms-powerpoint, application/msword, */* application/x-pdf */*<br />
+Accept-Language: en-gb,pt;q=0.5<br />
+Accept-Encoding: gzip, deflate<br />
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)<br />
+Host: localhost:79<br />
+Connection: Keep-Alive<br />
+Cookie: infoview_userCultureKey=useBrowserLocale<br />
+Resposta<br />
+
+HTTP/1.1 200 OK<br />
+Server: Microsoft-IIS/5.1<br />
+X-Powered-By: ASP.NET<br />
+Date: Thu, 25 May 2006 14:02:51 GMT<br />
+Content-Type: text/html<br />
+Accept-Ranges: bytes<br />
+Last-Modified: Thu, 25 May 2006 14:02:12 GMT<br />
+ETag: "cd3bdd2380c61:ba9"<br />
+Content-Length: 54<br />
+
+< html><br />
+ < body><br />
+  < p>olá mundo< /p><br />
+ < /body><br />
+< /html><br />
+Embora estes valores variem de acordo com o navegador que utilizarmos e com o servidor web que responde a este pedido em HTTP, muito do conteúdo será sempre igual:<br />
+no pedido<br />
+GET /introWebServer.html HTTP/1.1<br />
+
+ou seja estamos a pedir usando o protocolo HTTP versão 1.1 o ficheiro introWebServer.html que está na raiz do servidor<br />
+
+na resposta<br />
+HTTP/1.1 200 OK<br />
+
+ou seja o pedido é válido (200 OK) e o conteúdo segue embaixo. Como podemos ver depois de mais um conjunto de dados aparece finalmente o conteúdo em HTML da página que tínhamos criado.<br />
+
+Independentemente de estarmos falando de páginas dinâmicas ou páginas estáticas este será sempre o fluxo que o pedido/resposta entre o servidor e o navegador irá provocar.<br />
+
+<h1>Páginas dinâmicas e páginas estáticas</h1><br />
+A origem do conteúdo enviado pelo servidor web numa resposta a um pedido em HTTP pode ser:<br />
+
+estática: se vier directamente de um ficheiro já existente no servidor<br />
+dinâmica: se for criada dinamicamente por outro programa, script ou API chamado pelo servidor.<br />
+No caso de uma página dinâmica, o pedido, depois de recebido, é processado pelo servidor web que vai criar dinamicamente o conteúdo que depois será enviado para o cliente.<br />
+
+As páginas dinâmicas têm a vantagem de poderem ser programadas, ou seja usando alguma linguagem de programação (que dependendo do servidor web pode ser php, Java, Perl, Visual Basic .NET, C#, ...) podemos criar programas que correm no servidor web, eventualmente acessando a bases de dados e cujo resultado é enviado para o browser.<br />
+
+<h1>Exemplo do fluxo pedido/resposta gerado quando se acede a uma página dinâmica</h1><br />
+Num servidor web capaz de responder a páginas dinâmicas (no nosso caso o IIS da Microsoft) temos um ficheiro chamado introWebServer.asp com o seguinte conteúdo:<br />
+
+< html><br />
+ < body><br />
+  <%<br />
+  for i=1 to 10<br />
+ Response.Write("< p>olá mundo< /p>")<br />
+  next<br />
+  %><br />
+ < /body><br />
+< /html><br />
+Se no navegador tentar aceder a este ficheiro, a sequência pedido / resposta iria produzir os seguintes comandos:<br />
+
+Pedido<br />
+
+GET /introwebserver.asp HTTP/1.1<br />
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/x-shockwave-flash, application/vnd.ms-excel,<br />
+application/vnd.ms-powerpoint, application/msword, */*<br />
+Accept-Language: en-gb,pt;q=0.5<br />
+Accept-Encoding: gzip, deflate<br />
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)<br />
+Host: localhost:79<br />
+Connection: Keep-Alive<br />
+Cookie: infoview_userCultureKey=useBrowserLocale; ASPSESSIONIDQSRCCSAS=KJLFNNNCNHKODOIOCIICJFBA<br />
+Resposta<br />
+
+HTTP/1.1 200 OK<br />
+Server: Microsoft-IIS/5.1<br />
+Date: Thu, 25 May 2006 14:20:34 GMT<br />
+X-Powered-By: ASP.NET<br />
+Content-Length: 198<br />
+Content-Type: text/html<br />
+Cache-control: private<br />
+< html><br />
+ < body><br />
+  < p>olá mundo< /p>< p>olá mundo< /p>< p>olá mundo< /p>< p>olá mundo< /p>< p>olá mundo< /p><br />
+
+  < p>olá mundo< /p>< p>olá mundo< /p>< p>olá mundo< /p>< p>olá mundo< /p>< p>olá mundo< /p><br />
+ < /body><br />
+< /html><br />
+Como podemos ver, o pedido/resposta de um ficheiro estático ou de um ficheiro dinâmico gera fluxos de informação praticamente iguais, isto é, na web a informação que circula é essencialmente a mesma. A diferença é que um ficheiro dinâmico tem que ser primeiro processado pelo servidor web.<br />
+</h2>
+</body>
+</head>
+</html>
