@@ -4,27 +4,38 @@
 <meta charset="ISO-8859-1">
 <title>CGI</title>
 </head>
-<body>
+<style>
+
+div.container {
+ width: 73%;
+ border: none;
+ margin: auto;
+}
+
+header, footer {
+ padding: 1em;
+ color: white;
+ background-color: #474747;
+ clear: left;
+ text-align: center;
+}
+
+</style>
 <nav>
 <a href="index.html"><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat-2/256/arrow-back-icon.png" style="height: 15px;" > VOLTAR</a>
 </nav>
-<h2><h1>Common Gateway Interface (CGI)</h1>
+<div class="container">
+<header>
+<font size="26" color="white"> Common Gateway Interface (CGI) :</font>
+</header>
+<body>
+
 <p>From Wikipedia, the free encyclopedia</br>
 Jump to navigationJump to search</br>
 In computing, Common Gateway Interface (CGI) offers a standard protocol for web servers to execute programs that execute like console applications (also called command-line interface programs) running on a server that generates web pages dynamically. Such programs are known as CGI scripts or simply as CGIs. The specifics of how the script is executed by the server are determined by the server. In the common case, a CGI script executes at the time a request is made and generates HTML.[1]</br>
 In brief, an HTTP POST request from the client will send the CGI program HTML form data via standard input. Other data, such as URL paths, and HTTP header data, are presented as process environment variables.</br>
 
-<h1>Contents</h1> </br>
-1	History</br>
-2	Purpose of the CGI standard</br>
-3	Using CGI scripts</br>
-4	Example</br>
-5	Deployment</br>
-6	Uses</br>
-7	Alternatives</br>
-8	See also</br>
-9	References</br>
-10	External links</br>
+
 <h1><p>History</p></h1>
 The official CGI logo from the spec announcement</p>
 In 1993 the National Center for Supercomputing Applications (NCSA) team wrote the specification for calling command line executables on the www-talk mailing list.[2][3][4] The other Web server developers adopted it, and it has been a standard for Web servers ever since. A work group chaired by Ken Coar started in November 1997 to get the NCSA definition of CGI more formally defined.[5] This work resulted in RFC 3875, which specified CGI Version 1.1. Specifically mentioned in the RFC are the following contributors:[1]</p>
